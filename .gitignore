@@ -1,0 +1,7 @@
+# .gitignore
+node_modules/
+temp_clones/
+__pycache__/
+*.env
+.DS_Store
+frontend/dist/
