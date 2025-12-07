@@ -29,7 +29,7 @@ function App() {
     const formData = new FormData()
     formData.append('file', file)
     try {
-      const res = await axios.post('http://127.0.0.1:8000/analyze-data', formData)
+      const res = await axios.post('https://unspaghetti-dev.onrender.com/analyze-data', formData)
       setDataReport(res.data)
     } catch (err) { alert("Error connecting to backend") }
     setLoadingData(false)
@@ -40,7 +40,7 @@ function App() {
     const formData = new FormData()
     formData.append('file', file)
     try {
-      const res = await axios.post('http://127.0.0.1:8000/unspaghetti-it', formData, { responseType: 'blob' })
+      const res = await axios.post('https://unspaghetti-dev.onrender.com/unspaghetti-it', formData, { responseType: 'blob' })
       const url = window.URL.createObjectURL(new Blob([res.data]))
       const link = document.createElement('a')
       link.href = url
@@ -53,7 +53,7 @@ function App() {
   const analyzeRepo = async () => {
     setLoadingCode(true)
     try {
-      const res = await axios.post(`http://127.0.0.1:8000/analyze-repo?repo_url=${repoUrl}`)
+      const res = await axios.post(`https://unspaghetti-dev.onrender.com/analyze-repo?repo_url=${repoUrl}`)
       setRepoStatus(res.data)
     } catch (err) { alert("Failed to clone. Is the URL public?") }
     setLoadingCode(false)
@@ -63,7 +63,7 @@ function App() {
     if(!question) return
     setLoadingCode(true)
     try {
-      const res = await axios.post(`http://127.0.0.1:8000/ask-question?question=${question}`)
+      const res = await axios.post(`https://unspaghetti-dev.onrender.com/ask-question?question=${question}`)
       setChatAnswer(res.data)
     } catch (err) { alert("Error asking question") }
     setLoadingCode(false)
